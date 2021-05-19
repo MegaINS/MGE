@@ -47,6 +47,7 @@ object File {
             try {
                 buffer = BufferUtils.createByteBuffer(fc.size.toInt + 1)
                 while (fc.read(buffer) != -1){}
+                buffer.flip
             } catch {
                 case e: Throwable => e.printStackTrace()
             }finally if (fc != null) fc.close()
@@ -67,7 +68,7 @@ object File {
                         if (buffer.remaining == 0) buffer = resizeBuffer(buffer, buffer.capacity * 2)
 
                     }
-
+                    buffer.flip
                 }catch {
                     case e: Throwable => e.printStackTrace()
                 } finally {
@@ -75,10 +76,10 @@ object File {
                     if (rbc != null) rbc.close()
                 }
             }catch {
-                case e: Throwable => e.printStackTrace()
+                case e: Throwable => println( "ioResourceToByteBuffer")
             }
         }
-        buffer.flip
+
         buffer
     }
 }

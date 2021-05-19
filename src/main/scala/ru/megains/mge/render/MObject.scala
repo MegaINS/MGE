@@ -32,7 +32,19 @@ abstract class MObject {
         }
     }
 
-    def render(shader: Shader): Unit
+    def render(shader: Shader): Unit= {
 
-    def update(): Unit
+    }
+
+    def update(): Unit= {
+
+    }
+
+    def mouseMove(x:Int,y:Int):Unit = {
+
+    }
+
+    def mouseClick(x:Int,y:Int):Unit= {
+
+    }
 }

@@ -24,4 +24,13 @@ class MContainer extends MObject {
     override def update(): Unit = {
         _children.foreach(_.update())
     }
+
+    override def mouseClick(x: Int, y: Int): Unit = {
+        _children.foreach(_.mouseClick(x- posX.toInt,y - posY.toInt))
+    }
+
+    override def mouseMove(x: Int, y: Int): Unit = {
+        _children.foreach(_.mouseMove(x- posX.toInt,y- posY.toInt))
+
+    }
 }

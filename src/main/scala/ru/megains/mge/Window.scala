@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFWErrorCallback
 import org.lwjgl.opengl.GL11.glClearColor
 import org.lwjgl.opengl.{GL, GL11}
 import org.lwjgl.system.MemoryUtil.NULL
-
+import org.lwjgl.opengl.GL11._
 
 class Window(var width:Int, var height:Int, title:String) {
 
@@ -61,7 +61,7 @@ class Window(var width:Int, var height:Int, title:String) {
 
     def update(): Unit ={
         glfwSwapBuffers(id)
-
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT)
     }
 
     def isClose:Boolean = glfwWindowShouldClose(id)
