@@ -20,6 +20,7 @@ abstract class Shader {
 
     var uniforms: mutable.HashMap[String, UniformData] = new mutable.HashMap()
 
+
     def create(): Unit = {
         if (programId == 0) throw new Exception("Could not create Shader")
         createVertexShader(File.loadResource(s"$dir/vertex.glsl"))

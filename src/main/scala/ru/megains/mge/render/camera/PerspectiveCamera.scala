@@ -9,7 +9,7 @@ class PerspectiveCamera extends Camera {
     var zNear: Float = 0.0F
     var zFar: Float = 0.0F
 
-    def this(fovIn: Float, widthIn: Float, heightIn: Float, zNearIn: Float, zFarIn: Float){
+    def this(fovIn: Float, widthIn: Float, heightIn: Float, zNearIn: Float, zFarIn: Float)={
         this()
         setPerspective(fovIn, widthIn, heightIn, zNearIn, zFarIn)
     }

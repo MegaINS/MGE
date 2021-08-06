@@ -14,7 +14,7 @@ class OrthographicCamera() extends Camera {
     var zFar:Float = 0.0F
 
 
-    def this(leftIn: Float,rightIn: Float,bottomIn: Float,topIn: Float,zNearIn: Float,zFarIn: Float){
+    def this(leftIn: Float,rightIn: Float,bottomIn: Float,topIn: Float,zNearIn: Float,zFarIn: Float)={
         this()
         setOrtho(leftIn,rightIn,bottomIn,topIn,zNearIn,zFarIn)
     }

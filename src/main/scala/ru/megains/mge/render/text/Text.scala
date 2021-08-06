@@ -15,7 +15,7 @@ class Text() extends Model {
     private var _text: String = ""
     private var _textStyle: TextStyle = TextStyle.default
    // scale = 0.9f
-    def this(text: String, textStyle: TextStyle = TextStyle.default) {
+    def this(text: String, textStyle: TextStyle = TextStyle.default)= {
         this()
         this.text = text
         this.textStyle = textStyle

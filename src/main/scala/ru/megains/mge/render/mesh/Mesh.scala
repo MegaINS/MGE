@@ -14,7 +14,7 @@ class Mesh(mode: Int, vertexCount: Int, vaoId:Int, vboIdList:List[Int], val text
 
     def useTexture: Boolean = texture!= null
 
-    def render(shader: Shader) {
+    def render(shader: Shader):Unit= {
 
         shader.setUniform("dataTC",useTexture,useColor)
         if(useTexture){
@@ -26,7 +26,7 @@ class Mesh(mode: Int, vertexCount: Int, vaoId:Int, vboIdList:List[Int], val text
 
     }
 
-    def cleanUp() {
+    def cleanUp():Unit= {
         for(id <- 0 to vboIdList.size ){
             glDisableVertexAttribArray(id)
         }

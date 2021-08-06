@@ -8,7 +8,7 @@ class MSprite() extends Model {
    var  _texture: TTexture = _
 
 
-    def this(texture: TTexture,x:Int,y:Int){
+    def this(texture: TTexture,x:Int,y:Int)={
         this()
         _texture = texture
 

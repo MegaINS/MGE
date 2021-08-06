@@ -13,7 +13,7 @@ class TextureData() {
 
     var image:ByteBuffer = _
 
-    def this(imageBuffer: ByteBuffer){
+    def this(imageBuffer: ByteBuffer) ={
         this()
         try {
             val stack = stackPush

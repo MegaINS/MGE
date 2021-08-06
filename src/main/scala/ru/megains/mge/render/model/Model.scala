@@ -9,7 +9,7 @@ class Model extends MObject{
     var mesh:Mesh = _
     var active:Boolean = true
 
-    def this(meshIn:Mesh){
+    def this(meshIn:Mesh)={
         this()
         mesh = meshIn
     }

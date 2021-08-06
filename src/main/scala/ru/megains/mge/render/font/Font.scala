@@ -17,7 +17,7 @@ class Font(textureData: TextureData) extends TTexture(textureData) {
     val BITMAP_H = 1024
     val cdata: STBTTBakedChar.Buffer = STBTTBakedChar.malloc(2000)
 
-    def this(name: String) {
+    def this(name: String)= {
         this(new TextureData())
         height = 24
         val texID = getGlTextureId

@@ -7,7 +7,7 @@ class Texture private (textureData: TextureData) extends TTexture(textureData) {
 
 
 
-    def this(name: String){
+    def this(name: String)={
         this(new TextureData(File.ioResourceToByteBuffer(name, 8 * 1024)))
 
         glBindTexture(GL_TEXTURE_2D, getGlTextureId)

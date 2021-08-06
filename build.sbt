@@ -1,5 +1,5 @@
 
-ThisBuild / scalaVersion := "2.13.1"
+ThisBuild / scalaVersion := "3.0.1"
 ThisBuild / organization := "ru.megains"
 
 val lwjglVersion = "3.1.5"
@@ -23,8 +23,6 @@ lazy val mge = (project in file("."))
                 "org.lwjgl" % "lwjgl-glfw" % lwjglVersion classifier "natives-windows" classifier "natives-linux" classifier "natives-macos",
                 "org.lwjgl" % "lwjgl-opengl" % lwjglVersion classifier "natives-windows" classifier "natives-linux" classifier "natives-macos",
                 "org.lwjgl" % "lwjgl-stb" % lwjglVersion classifier "natives-windows" classifier "natives-linux" classifier "natives-macos",
-
-
             )
         )
 

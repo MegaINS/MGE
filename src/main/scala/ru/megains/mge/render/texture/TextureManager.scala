@@ -15,7 +15,7 @@ class TextureManager {
 
 
 
-    def bindTexture(texture: TTexture) {
+    def bindTexture(texture: TTexture) : Unit = {
 
         if (texture != currentTexture) {
             currentTexture = texture
@@ -23,7 +23,7 @@ class TextureManager {
         }
     }
 
-    def unbindTexture() {
+    def unbindTexture(): Unit =  {
         currentTexture = null
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0)
     }
@@ -57,11 +57,11 @@ object TextureManager {
 
     var textureManager:TextureManager = _
 
-    def bindTexture(texture: TTexture) {
+    def bindTexture(texture: TTexture): Unit =  {
         textureManager.bindTexture(texture)
     }
 
-    def unbindTexture() {
+    def unbindTexture(): Unit =  {
         textureManager.unbindTexture()
     }
 
