@@ -1,7 +1,7 @@
 package ru.megains.mge.render.shader
 
 
-import org.joml.Matrix4f
+import org.joml.{Matrix4f, Vector3f}
 import org.lwjgl.opengl.GL20._
 import ru.megains.mge.File
 import ru.megains.mge.render.camera.Camera
@@ -78,15 +78,21 @@ abstract class Shader {
     var uniformDataBuf = new mutable.HashMap[UniformData,Object]()
     def setUniform(uniformName: String, value1: Boolean,value2: Boolean): Unit = {
         val uniformData = getUniform(uniformName)
-        uniformDataBuf.get(uniformData) match {
-            case Some(value) =>
-                if(value !=  (value1,value2)){
-                    uniformDataBuf += uniformData -> (value1,value2)
-                    glUniform2i(uniformData.uniformLocation, if (value1) 1 else 0, if (value2) 1 else 0)
+
+        uniformData match {
+            case null =>
+            case _ =>
+
+                uniformDataBuf.get(uniformData) match {
+                    case Some(value) =>
+                        if(value != (value1,value2)){
+                            uniformDataBuf += uniformData -> (value1,value2)
+                            glUniform2i(uniformData.uniformLocation, if (value1) 1 else 0, if (value2) 1 else 0)
+                        }
+                    case None =>
+                        uniformDataBuf += uniformData -> (value1,value2)
+                        glUniform2i(uniformData.uniformLocation, if (value1) 1 else 0, if (value2) 1 else 0)
                 }
-            case None =>
-                uniformDataBuf += uniformData -> (value1,value2)
-                glUniform2i(uniformData.uniformLocation, if (value1) 1 else 0, if (value2) 1 else 0)
         }
         //glUniform2i(uniformData.uniformLocation, if (value1) 1 else 0, if (value2) 1 else 0)
     }
@@ -102,18 +108,18 @@ abstract class Shader {
 //        glUniform1i(uniformData.uniformLocation, value)
 //    }
 
-//    def setUniform(uniformName: String, value: Vec3f): Unit = {
-//        val uniformData = getUniform(uniformName)
-//        glUniform3f(uniformData.uniformLocation, value.x, value.y, value.z)
-//    }
+    def setUniform(uniformName: String, value: Vector3f): Unit = {
+        val uniformData = getUniform(uniformName)
+        glUniform3f(uniformData.uniformLocation, value.x, value.y, value.z)
+    }
 
 
 
     def getUniform(uniformName: String): UniformData = {
-        uniforms(uniformName)// match {
-//            case Some(value) => value
-//            case None => throw new RuntimeException("Uniform [" + uniformName + "] has nor been created")
-//        }
+        uniforms.get(uniformName) match {
+            case Some(value) => value
+            case None => null//throw new RuntimeException("Uniform [" + uniformName + "] has nor been created")
+        }
     }
 
     def bind(): Unit = {

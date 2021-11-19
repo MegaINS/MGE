@@ -1,6 +1,7 @@
 package ru.megains.mge.render.texture
 
 import org.lwjgl.opengl.GL11._
+import org.lwjgl.opengl.GL30.glGenerateMipmap
 import org.lwjgl.stb.STBImage.stbi_image_free
 import org.lwjgl.stb.STBImageResize._
 import org.lwjgl.system.MemoryUtil.{memAlloc, memFree}
@@ -63,6 +64,11 @@ class TextureAtlas(data: TextureData) extends TTexture(data) {
         }
         if (mipmapLevel == 0) stbi_image_free(data.image)
         else memFree(input_pixels)
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR)
+        glGenerateMipmap(GL_TEXTURE_2D)
     }
 
 

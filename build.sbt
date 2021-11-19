@@ -1,8 +1,8 @@
 
-ThisBuild / scalaVersion := "3.0.1"
+ThisBuild / scalaVersion := "2.13.6"
 ThisBuild / organization := "ru.megains"
 
-val lwjglVersion = "3.1.5"
+val lwjglVersion = "3.2.3"
 
 lazy val mge = (project in file("."))
         .settings(

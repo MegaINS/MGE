@@ -10,11 +10,12 @@ import org.lwjgl.opengl.GL11._
 
 class Window(var width:Int, var height:Int, title:String) {
 
+
     lazy val id: Long = glfwCreateWindow(width, height, title, NULL, NULL)
 
     Window.window = this
-    def create(): Unit = {
-        glfwWindowHint(GLFW_DEPTH_BITS, 24)
+    def create(game: Game): Unit = {
+
         if (!glfwInit) throw new IllegalStateException("Unable to initialize GLFW")
         glfwDefaultWindowHints()
         GLFWErrorCallback.createPrint(System.err).set
@@ -52,11 +53,12 @@ class Window(var width:Int, var height:Int, title:String) {
             width = widthIn
             height = heightIn
             GL11.glViewport(0, 0, width, height)
+            game.resize(width,height)
         })
 
-        setClearColor(0.5f,0.5f,0.5f,1)
-
-
+        setClearColor(150f/256f,187f/256f,1f,1)
+        setSwapInterval(1)
+        //glfwWindowHint(GLFW_DEPTH_BITS, 32)
     }
 
     def update(): Unit ={
@@ -76,11 +78,15 @@ class Window(var width:Int, var height:Int, title:String) {
     def setClearColor(r:Float,g:Float,b:Float,a:Float): Unit ={
         glClearColor(r, g, b, a)
     }
+
+    def setSwapInterval(interval:Int) :Unit={
+        glfwSwapInterval(interval)
+    }
 }
 
 object Window{
 
     var window:Window =_
-    def wight: Int = window.width
+    def width: Int = window.width
     def height: Int = window.height
 }
